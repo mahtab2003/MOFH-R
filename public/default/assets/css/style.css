@@ -1,0 +1,57 @@
+.dark-mode > .login-page{
+	background: none;
+}
+
+.alert span p{
+	margin: 0;
+}
+
+.ck.ck-content
+{
+	font-size: 1em;
+	line-height: 1.6em;
+	margin-bottom: 0.8em;
+	min-height: 200px;
+	padding: 1.5em 2em;
+}
+
+.dark-mode .ck.ck-editor__main>.ck-editor__editable
+{
+	background: transparent;
+}
+
+.dark-mode .ck.ck-toolbar, .dark-mode .ck.ck-list, .dark-mode .ck.ck-input-text
+{
+	background: transparent;
+}
+
+.dark-mode .ck.ck-reset_all, .dark-mode .ck.ck-reset_all *
+{
+	color: white;
+}
+
+.dark-mode .ck.ck-button.ck-on, .dark-mode a.ck.ck-button.ck-on
+{
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.dark-mode .ck.ck-button.ck-off:hover, .dark-mode a.ck.ck-button.ck-off:hover
+{
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.dark-mode .ck.ck-dropdown__panel, .dark-mode .ck.ck-balloon-panel,  .dark-mode .ck.ck-labeled-field-view>.ck.ck-labeled-field-view__input-wrapper>.ck.ck-label
+{
+	background: #1b2434;
+}
+
+.dark-mode .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused, .dark-mode .ck.ck-input-text:focus
+{
+	border-color: #c4c4c4;
+	box-shadow: none;
+}
+
+.reply p
+{
+	margin: 0;
+}
