@@ -132,7 +132,7 @@ CREATE TABLE `nx_hosting` (
 	`label` varchar(150) NOT NULL
 );
 # END
-INSERT INTO `nx_base` (`title`, `status`, `theme`, `docs`) VALUES ('Web Host', 'active', 'default', 'https://forum.mofh-r.eu.org');
+INSERT INTO `nx_base` (`title`, `status`, `theme`, `docs`) VALUES ('Web Host', 'active', 'default', 'https://nxvim.freeflarum.com');
 # END
 INSERT INTO `nx_captcha` (`type`, `site_key`, `secret_key`, `status`) VALUES ('google', 'site key', 'secret key', 'inactive');
 # END
