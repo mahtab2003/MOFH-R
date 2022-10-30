@@ -32,6 +32,7 @@
 				<div class="tab-pane fade active show" id="domain-content" aria-labelledby="domain-tab" role="tabpanel">
 					<div class="form-group p-3">
 						<label class="form-label"><?= $this->ui->text('domain_text') ?></label>
+						<p> The domain must point to the <?= $this->site->get(['title']) ?> nameservers before you can use it.  </p>
 						<div class="input-group">
 							<div class="custom-file">
 								<input id="domain" type="text"class="form-control" placeholder="...">
