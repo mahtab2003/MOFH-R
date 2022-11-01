@@ -86,6 +86,8 @@ class C extends CI_Controller
 					{
 						$user = $this->user->get(['name', 'email'], ['key' => $res[0]['for']]);
 						$mofh = $this->mofh->get(['cpanel_url', 'ns_1', 'ns_2']);
+						$mofh['cpanel_url'] = str_replace('https://', '', $mofh['cpanel_url']);
+						$mofh['cpanel_url'] = str_replace('http://', '', $mofh['cpanel_url']);
 						$param['user_name'] = $user[0]['name'];
 						$param['user_email'] = $user[0]['email'];
 						$param['account_username'] = $username;
