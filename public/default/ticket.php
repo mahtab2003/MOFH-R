@@ -32,6 +32,8 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php $start = 0 ?>
+						<?php $end = 0 ?>
 						<?php if (is_array($list) AND count($list) > 0): ?>
 							<?php $start = $this->input->get('page') ?? 0 ?>
 							<?php $start *= 5 ?>
@@ -71,7 +73,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-between align-items-center">
-					<div><?= $this->ui->text('showing_text') ?> <?php if ($start === 0 AND $end === 0): ?> 0 <?php else: ?> <?= $start + 1 ?> <?php endif ?> <?= $this->ui->text('to_text') ?> <?= $end ?? 0 ?> <?= $this->ui->text('of_text') ?> <?= count($list) ?> <?= $this->ui->text('entites_text') ?></div>
+					<div><?= $this->ui->text('showing_text') ?> <?php if (isset($start) AND $start === 0 AND $end === 0): ?> 0 <?php else: ?> <?= $start + 1 ?> <?php endif ?> <?= $this->ui->text('to_text') ?> <?= $end ?? 0 ?> <?= $this->ui->text('of_text') ?> <?= count($list) ?> <?= $this->ui->text('entites_text') ?></div>
 					<ul class="pagination pagination-sm float-right m-0">
 						<?php $page = $this->input->get('page') ?? 0 ?>
 						<?php $i = count($list); ?>

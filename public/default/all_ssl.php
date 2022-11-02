@@ -31,6 +31,8 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php $start = 0 ?>
+						<?php $end = 0 ?>
 						<?php if (is_array($list) AND count($list) > 0): ?>
 							<?php $start = $this->input->get('page') ?? 0 ?>
 							<?php $start *= 5 ?>

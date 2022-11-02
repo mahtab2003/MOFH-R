@@ -183,6 +183,10 @@ class N extends CI_Controller
 					$or_where[] = ['role' => 'admin'];
 				}
 				$data['list'] = $this->user->get([], $where, $or_where);
+				if($data['list'] === false)
+				{
+					$data['list'] = [];
+				}
 				
 				$this->load->view($this->ui->template_dir().'/includes/header', $data);
 				$this->load->view($this->ui->template_dir().'/includes/navbar');
