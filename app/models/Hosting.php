@@ -32,7 +32,7 @@ class Hosting extends CI_Model
 	{
 		$user = $this->user->logged_data(['email', 'key']);
 		$username = hash_32($label.':'.$domain.':'.$user['email'].':'.time());
-		$password = substr(hash_64($username.':'.time()), 0, 15);
+		$password = hash_64($username.':'.time());
 		$res = $this->mofh->exec('create', [
 			'username' => $username,
 			'password' => $password,
@@ -102,7 +102,7 @@ class Hosting extends CI_Model
 			'username' => $username,
 			'reason' => $reason
 		]);
-		$data = $res->getData();
+		$data = $this->getData();
 		$msg = $data['result']['statusmsg'];
 		if(is_string($res))
 		{
@@ -129,7 +129,7 @@ class Hosting extends CI_Model
 		$res = $this->mofh->exec('unsuspend', [
 			'username' => $username
 		]);
-		$data = $res->getData();
+		$data = $this->getData();
 		$msg = $data['result']['statusmsg'];
 		if(is_string($res))
 		{

@@ -236,9 +236,9 @@ class F extends CI_Controller
 
 	function reset($token)
 	{
-		$json = $this->encryption->decrypt($token);
-		$cs = gzuncompress($json);
-		$arr = json_decode($cs, true);
+		$gz = base64_decode($token);
+		$json = gzuncompress($gz);
+		$arr = json_decode($json, true);
 		$email = $arr[0];
 		$key = $arr[1];
 		$time = $arr[2];

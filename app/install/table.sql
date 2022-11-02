@@ -101,8 +101,8 @@ DROP TABLE IF EXISTS `nx_mofh`;
 # END
 CREATE TABLE `nx_mofh` (
 	`id` varchar(20) NOT NULL DEFAULT 'mofh',
-	`username` varchar(256) NOT NULL,
-	`password` varchar(256) NOT NULL,
+	`username` varchar(100) NOT NULL,
+	`password` varchar(100) NOT NULL,
 	`cpanel_url` varchar(100) NOT NULL,
 	`ns_1` varchar(100) NOT NULL,
 	`ns_2` varchar(100) NOT NULL,
@@ -132,13 +132,13 @@ CREATE TABLE `nx_hosting` (
 	`label` varchar(150) NOT NULL
 );
 # END
-INSERT INTO `nx_base` (`title`, `status`, `theme`, `docs`) VALUES ('Web Host', 'active', 'default', 'https://nxvim.freeflarum.com');
+INSERT INTO `nx_base` (`title`, `status`, `theme`, `docs`) VALUES ('Web Host', 'active', 'default', 'https://forum.mofh-r.eu.org');
 # END
 INSERT INTO `nx_captcha` (`type`, `site_key`, `secret_key`, `status`) VALUES ('google', 'site key', 'secret key', 'inactive');
 # END
 INSERT INTO `nx_smtp` (`hostname`, `username`, `password`, `port`, `from`, `status`) VALUES ('smtp.example.com', 'username', 'password', 587, 'jhon@example.com', 'inactive');
 # END
-INSERT INTO `nx_emails` (`id`, `subject`, `content`, `docs`) VALUES ('new_user', 'Action Required', '{site_name}, {site_url}, {user_name}, {user_email}, {activation_url}', '{site_name}, {site_url}, {user_name}, {user_email}, {activation_url}'), ('forget_password', 'Forget Password', '{user_name} {user_email} {reset_url} {site_name} {site_url}', '{user_name} {user_email} {reset_url} {site_name} {site_url}'), ('new_ticket', 'Ticket Created', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}'), ('reply_ticket', 'Ticket Reply Received', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}'), ('account_created', 'Account Created', '{site_name}, {site_url}, {account_username}, {account_password}, {account_domain}, {main_domain}, {cpanel_domain}, {sql_server}, {nameserver_1}, {nameserver_2}, {account_label}, {user_name}, {user_email}','{site_name}, {site_url}, {account_username}, {account_password}, {account_domain}, {main_domain}, {cpanel_domain}, {sql_server}, {nameserver_1}, {nameserver_2}, {account_label}, {user_name}, {user_email}'), ('account_suspended', 'Account Suspended', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}, {some_reason}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}, {some_reason}'), ('account_reactivated', 'Account Reactivated', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}'), ('account_deleted', 'Account Deleted', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}'), ('new_ssl', 'SSL Requested', '{site_name}, {site_url}, {ssl_url}, {user_name}, {ssl_id}', '{site_name}, {site_url}, {ssl_url}, {user_name}, {ssl_id}');
+INSERT INTO `nx_emails` (`id`, `subject`, `content`, `docs`) VALUES ('new_user', 'Action Required', '{site_name}, {site_url}, {user_name}, {user_email}, {activation_url}', '{site_name}, {site_url}, {user_name}, {user_email}, {activation_url}'), ('forget_password', 'Forget Password', '{user_name} {user_email} {reset_url} {site_name} {site_url}', '{user_name} {user_email} {reset_url} {site_name} {site_url}'), ('new_ticket', 'Ticket Created', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}'), ('reply_ticket', 'Ticket Reply Received', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}', '{site_name}, {site_url}, {ticket_url}, {ticket_id}, {user_name}'), ('account_created', 'Account Created', '{site_name}, {site_url}, {account_username}, {account_password}, {account_domain}, {main_domain}, {cpanel_domain}, {sql_server}, {nameserver_1}, {nameserver_2}, {ftp_server}, {account_label}, {user_name}, {user_email}','{site_name}, {site_url}, {account_username}, {account_password}, {account_domain}, {main_domain}, {cpanel_domain}, {sql_server}, {nameserver_1}, {nameserver_2}, {account_label}, {ftp_server}, {user_name}, {user_email}'), ('account_suspended', 'Account Suspended', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}, {some_reason}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}, {some_reason}'), ('account_reactivated', 'Account Reactivated', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}'), ('account_deleted', 'Account Deleted', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}', '{site_name}, {site_url}, {account_username}, {user_name}, {user_email}'), ('new_ssl', 'SSL Requested', '{site_name}, {site_url}, {ssl_url}, {user_name}, {ssl_id}', '{site_name}, {site_url}, {ssl_url}, {user_name}, {ssl_id}');
 # END
 INSERT INTO `nx_gogetssl` (`username`, `password`, `status`) VALUES ('username', 'password', 'inactive');
 # END

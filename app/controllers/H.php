@@ -292,7 +292,7 @@ class H extends CI_Controller
 					elseif(is_bool($res) AND $res !== false)
 					{
 						$this->session->set_flashdata('msg', json_encode([1, $this->ui->text('account_label_changed_text')]));
-						redirect('h/accounts');
+						redirect('h/account_settings/'.$id);
 					}
 					else
 					{
@@ -303,7 +303,7 @@ class H extends CI_Controller
 			}
 			elseif($this->input->get('security') AND $this->input->post('submit'))
 			{
-				$h = $this->hosting->get(['for', 'status', 'key'], ['username' => $id]);
+				$h = $this->hosting->get(['for', 'status', 'key', 'password'], ['username' => $id]);
 				if(get_cookie('role') === 'user' OR get_cookie('role') === 'support' AND $this->user->logged_data(['key']) !== $h[0]['for'])
 				{
 					redirect('p/error_404');
@@ -339,7 +339,7 @@ class H extends CI_Controller
 					}
 				}
 			}
-			elseif($this->input->get('deactivate') AND $this->input->post('submit'))
+			elseif($this->input->get('pref') AND $this->input->post('submit'))
 			{
 				$h = $this->hosting->get(['for', 'status', 'key'], ['username' => $id]);
 				if(get_cookie('role') === 'user' OR get_cookie('role') === 'support' AND $this->user->logged_data(['key']) !== $h[0]['for'])
@@ -363,7 +363,7 @@ class H extends CI_Controller
 					elseif(is_bool($res) AND $res !== false)
 					{
 						$this->session->set_flashdata('msg', json_encode([1, $this->ui->text('deactivate_account_text')]));
-						redirect('h/account_settings/'.$id);
+						redirect('h/accounts');
 					}
 					else
 					{

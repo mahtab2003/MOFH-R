@@ -94,15 +94,11 @@ class S extends CI_Controller
 					if($this->fv->run() === true)
 					{
 						$res = $this->ssl->create($this->input->post('provider'), $this->input->post('domain'));
-						$emails = $this->user->get(['name', 'email'], ['key' => $this->user->logged_data(['email'])], [['role' => 'support'], ['role' => 'admin'], ['role' => 'root']]);
-						foreach ($emails as $value)
-						{
-							$this->mailer->send('new_ssl', $value['email'], [
-								'ssl_id' => $key,
-								'ssl_url' => base_url('s/ssl'),
-								'user_name' => $value['name']
-							]);
-						}
+						$this->mailer->send('new_ssl', $this->user->logged_data(['email']), [
+							'ssl_id' => $key,
+							'ssl_url' => base_url('s/ssl'),
+							'user_name' => $this->user->logged_data(['name'])
+						]);
 						if(!is_bool($res))
 						{
 							$this->session->set_flashdata('msg', json_encode([0, $res]));
@@ -181,7 +177,7 @@ class S extends CI_Controller
 					}
 					$data['info']['provider'] = $info[0]['provider'];
 					
-					if(get_cookie('role') === 'user' OR get_cookie('role') === 'support' AND $this->user->logged_data(['key']) !== $info[0]['for'])
+					if(get_cookie('role') === 'user' AND $this->user->logged_data(['key']) !== $info[0]['for'] OR get_cookie('role') === 'support' AND $this->user->logged_data(['key']) !== $info[0]['for'])
 					{
 						redirect('p/error_404');
 					}

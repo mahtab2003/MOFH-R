@@ -1,4 +1,4 @@
-post<?php 
+<?php 
 
 class C extends CI_Controller
 {
@@ -54,9 +54,9 @@ class C extends CI_Controller
 
 	function mofh()
 	{
-		if($this->input->post('username'))
+		if($this->input->get('username'))
 		{
-			if($this->input->post('username'))
+			if($this->input->post('status'))
 			{
 				$username = $this->input->post('username');
 				$status = $this->input->post('status');
@@ -95,6 +95,7 @@ class C extends CI_Controller
 						$param['account_domain'] = $res[0]['domain'];
 						$param['main_domain'] = $res[0]['main'];
 						$param['sql_server'] = str_replace('cpanel', $res[0]['sql'], $mofh['cpanel_url']);
+						$param['ftp_server'] = str_replace('cpanel', 'ftp', $mofh['cpanel_url']);
 						$param['account_label'] = $res[0]['label'];
 						$param['cpanel_domain'] = $mofh['cpanel_url'];
 						$param['nameserver_1'] = $mofh['ns_1'];

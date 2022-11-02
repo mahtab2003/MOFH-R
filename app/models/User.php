@@ -70,7 +70,7 @@ class User extends CI_Model
 			$token = $data['rec'];
 			$json = json_encode([$email, $token, $time]);
 			$gz = gzcompress($json);
-			$token = $this->encryption->encrypt($gz);
+			$token = base64_encode($gz);
 			$reset_url = base_url('f/reset/'.$token);
 			$this->mailer->send('forget_password', $email, [
 				'user_name' => $data['name'],
