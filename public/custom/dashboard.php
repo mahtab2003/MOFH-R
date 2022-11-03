@@ -16,6 +16,11 @@
 </div>
 <div class="content">
 	<div class="container-xl">
+		<?php if (is_updated() === false): ?>
+			<div class="callout callout-warning">
+				<?= $this->ui->text('update_available_text') ?> <a href="<?= base_url('p/update') ?>"><?= $this->ui->text('click_here_text') ?></a>
+			</div>
+		<?php endif ?>
 		<div class="row">
 			<div class="col-sm-6 col-md-4">
 				<div class="info-box shadow-sm">

@@ -32,6 +32,7 @@ $lang['emails_title'] = 'Emails';
 $lang['edit_email_title'] = 'Edit Email';
 $lang['about_title'] = 'About';
 $lang['cpanel_login_title'] = 'cPanel Login';
+$lang['update_title'] = 'System Update';
  
 // Headings Text
 $lang['general_settings_text'] = 'General';
@@ -93,6 +94,7 @@ $lang['setup_1_text'] = 'Register a new account for Reseller Web Hosting at http
 $lang['setup_2_text'] = 'Register a new account for SSL Reseller Program at https://gogetssl.com.';
 $lang['setup_3_text'] = 'Register a new account for Google Recaptcha at https://console.google.com/recaptcha/admin.';
 $lang['cpanel_login_text'] = 'Redirecting to cPanel.';
+$lang['update_available_text'] = 'A new version of this available.';
 
 // Form Fields And Placeholders
 $lang['name_text'] = 'Full Name';
@@ -153,6 +155,7 @@ $lang['mysql_hostname_text'] = 'MySQL Hostname';
 $lang['mysql_port_text'] = 'MySQL Port';
 $lang['ftp_hostname_text'] = 'FTP Hostname';
 $lang['ftp_port_text'] = 'FTP Port';
+$lang['changelogs_text'] = 'Change Logs';
 
 // Buttons Text
 $lang['login_btn_text'] = 'Login';
@@ -181,6 +184,7 @@ $lang['reactivate_btn_text'] = 'Reactivate';
 $lang['deactivate_btn_text'] = 'Deactivate';
 $lang['show_hide_btn_text'] = 'Show / Hide';
 $lang['redirect_btn_text'] = 'Redirect Now';
+$lang['update_btn_text'] = 'Update Now';
 
 // Links Text
 $lang['login_page_text'] = 'Already have an account?';
@@ -202,6 +206,7 @@ $lang['dashboard_link_text'] = 'Dashboard';
 $lang['email_link_text'] = 'Email';
 $lang['edit_link_text'] = 'Edit';
 $lang['xdashboard_link_text'] = 'Admin Dashboard';
+$lang['click_here_text'] = 'Click here to update.';
 
 // Error Messasges Text
 $lang['error_occured_text'] = 'An error occured. try again later.';

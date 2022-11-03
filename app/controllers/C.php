@@ -52,6 +52,23 @@ class C extends CI_Controller
 		}
 	}
 
+	function update()
+	{
+		$this->load->helper('ui');
+		if($this->input->get('corn_version'))
+		{
+			$json = @file_get_contents(NX_REPO.'latest.json');
+			if($json !== false)
+			{
+				$data = json_decode($json, true);
+				if(floatval($data['version']) > floatval(get_info('version')))
+				{
+					file_put_contents(APPPATH.'logs/update.json', $json);
+				}
+			}
+		}
+	}
+
 	function mofh()
 	{
 		if($this->input->get('username'))

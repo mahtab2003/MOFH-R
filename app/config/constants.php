@@ -100,3 +100,4 @@ defined('HASH_SALT')			OR define('HASH_SALT', 'salt');
 defined('NX_TITLE')				OR define('NX_TITLE', 'MOFH-R');
 defined('NX_VERSION')			OR define('NX_VERSION', 0.1);
 defined('NX_BUILD')				OR define('NX_BUILD', '26 October 2022');
+defined('NX_REPO')				OR define('NX_REPO', 'https://raw.githubusercontent.com/mahtab2003/MOFH-R/update/');

@@ -16,6 +16,11 @@
 </div>
 <div class="content">
 	<div class="container-xl">
+		<?php if (is_updated() === false): ?>
+			<div class="callout callout-warning">
+				<?= $this->ui->text('update_available_text') ?> <a href="<?= base_url('p/update') ?>"><?= $this->ui->text('click_here_text') ?></a>
+			</div>
+		<?php endif ?>
 		<div class="card card-primary card-outline card-tabs">
 			<div class="card-header p-0 pt-1 border-bottom-0">
 				<ul class="nav nav-tabs" role="tablist">

@@ -48,4 +48,26 @@ if(!function_exists('get_info'))
 	}
 }
 
+if(!function_exists('is_updated'))
+{
+	function is_updated($version = false)
+	{
+		$latest = file_get_contents(APPPATH.'logs/update.json');
+		$data = json_decode($latest, true);
+		if(floatval($data['version']) > floatval(get_info('version')))
+		{
+			if ($version !== false)
+			{
+				return $data['version'];
+			}
+			return false;
+		}
+		if ($version !== false)
+		{
+			return get_info('version');
+		}
+		return true;
+	}
+}
+
 ?>
