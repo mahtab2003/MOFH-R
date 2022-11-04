@@ -61,44 +61,51 @@ class P extends CI_Controller
 		$this->load->model('user');
 		if($this->user->is_logged() AND get_cookie('role') === 'root')
 		{
-			$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'.json');
-			$latest = json_decode($json, true);
-			if($this->input->get('update'))
+			if(is_updated() === false)
 			{
-				if($latest['files'] === "true")
+				$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'.json');
+				$latest = json_decode($json, true);
+				if($this->input->get('update'))
 				{
-					$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/files.json');
-					$list = json_decode($json, true);
-					foreach ($list as $key => $value)
-					{ 
-						file_put_contents(APPPATH.'../'.$key, base64_decode($value));
-					}
-				}
-				if($latest['db'] === "true")
-				{
-					$this->load->database();
-					$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/db.json');
-					$list = json_decode($json, true);
-					foreach ($list as $value)
+					if($latest['files'] === "true")
 					{
-						$this->db->query(str_replace('nx_', $this->db->dbprefix, $value));
+						$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/files.json');
+						$list = json_decode($json, true);
+						foreach ($list as $key => $value)
+						{ 
+							file_put_contents(APPPATH.'../'.$key, base64_decode($value));
+						}
 					}
+					if($latest['db'] === "true")
+					{
+						$this->load->database();
+						$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/db.json');
+						$list = json_decode($json, true);
+						foreach ($list as $value)
+						{
+							$this->db->query(str_replace('nx_', $this->db->dbprefix, $value));
+						}
+					}
+					$data = file_get_contents(APPPATH.'config/constants.php');
+					$data = str_replace(get_info('version'), is_updated(true), $data);
+					file_put_contents(APPPATH.'config/constants.php', $data);
+					redirect('p/about');
 				}
-				$data = file_get_contents(APPPATH.'config/constants.php');
-				$data = str_replace(get_info('version'), is_updated(true), $data);
-				file_put_contents(APPPATH.'config/constants.php', $data);
-				redirect('p/about');
+				else
+				{
+					$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/list.json');
+					$list = json_decode($json, true);
+					$data['title'] = 'update_title';
+					$data['list'] = $list;
+
+					$this->load->view($this->ui->template_dir().'/includes/header', $data);
+					$this->load->view($this->ui->template_dir().'/update');
+					$this->load->view($this->ui->template_dir().'/includes/footer');
+				}
 			}
 			else
 			{
-				$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/list.json');
-				$list = json_decode($json, true);
-				$data['title'] = 'update_title';
-				$data['list'] = $list;
-
-				$this->load->view($this->ui->template_dir().'/includes/header', $data);
-				$this->load->view($this->ui->template_dir().'/update');
-				$this->load->view($this->ui->template_dir().'/includes/footer');
+				redirect('p/about');
 			}
 		}
 		else
