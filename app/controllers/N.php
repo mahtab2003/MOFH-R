@@ -21,6 +21,7 @@ class N extends CI_Controller
 		$this->load->model('ssl');
 		$this->load->model('ticket');
 		$this->load->model('hosting');
+		$this->load->model('sitepro');
 		$this->load->model('mofh');
 		if($this->user->is_logged())
 		{
@@ -595,6 +596,42 @@ class N extends CI_Controller
 							$this->session->set_flashdata('msg', json_encode([0, $this->ui->text('required_fields_text')]));
 						}
 						redirect('n/site_settings?gogetssl=true');
+					}
+				}
+				elseif($this->input->post('submit') AND $this->input->get('sitepro'))
+				{
+					$this->fv->set_rules('username', $this->ui->text('username_text'), ['trim', 'required']);
+					$this->fv->set_rules('password', $this->ui->text('password_text'), ['trim', 'required']);
+					$this->fv->set_rules('status', $this->ui->text('status_text'), ['trim', 'required']);
+					if($this->fv->run() === true)
+					{
+						$res = $this->sitepro->set([
+							'username' => $this->input->post('username'),
+							'password' => $this->input->post('password'),
+							'status' => $this->input->post('status')
+						]);
+						if($res !== false)
+						{
+							$this->session->set_flashdata('msg', json_encode([1, $this->ui->text('sitepro_settings_updated_text')]));
+							redirect('n/site_settings?sitepro=true');
+						}
+						else
+						{
+							$this->session->set_flashdata('msg', json_encode([0, $this->ui->text('error_occured_text')]));
+							redirect('n/site_settings?sitepro=true');
+						}
+					}
+					else
+					{
+						if(validation_errors() !== '')
+						{
+							$this->session->set_flashdata('msg', json_encode([0, validation_errors()]));
+						}
+						else
+						{
+							$this->session->set_flashdata('msg', json_encode([0, $this->ui->text('required_fields_text')]));
+						}
+						redirect('n/site_settings?sitepro=true');
 					}
 				}
 				else

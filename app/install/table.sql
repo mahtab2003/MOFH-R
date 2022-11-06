@@ -132,6 +132,15 @@ CREATE TABLE `nx_hosting` (
 	`label` varchar(150) NOT NULL
 );
 # END
+DROP TABLE IF EXISTS `nx_sitepro`;
+# END
+CREATE TABLE `nx_sitepro` (
+	`id` varchar(20) NOT NULL DEFAULT 'sitepro',
+	`username` varchar(100) NOT NULL,
+	`password` varchar(100) NOT NULL,
+	`status` varchar(8) NOT NULL
+);
+# END
 INSERT INTO `nx_base` (`title`, `status`, `theme`, `docs`) VALUES ('Web Host', 'active', 'default', 'https://forum.mofh-r.eu.org');
 # END
 INSERT INTO `nx_captcha` (`type`, `site_key`, `secret_key`, `status`) VALUES ('google', 'site key', 'secret key', 'inactive');
@@ -145,3 +154,5 @@ INSERT INTO `nx_gogetssl` (`username`, `password`, `status`) VALUES ('username',
 INSERT INTO `nx_mofh` (`username`, `password`, `cpanel_url`, `ns_1`, `ns_2`, `plan`) VALUES ('username', 'password', 'https://cpanel.byethost.com', 'ns1.byethost.com', 'ns2.byethost.com', 'free');
 # END
 INSERT INTO `nx_mofh_ext` (`domain`) VALUES ('.byethost.com');
+# END
+INSERT INTO `nx_sitepro` (`username`, `password`, `status`) VALUES ('username', 'password', 'inactive');

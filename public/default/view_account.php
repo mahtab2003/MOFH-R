@@ -195,7 +195,12 @@
 						<tr>
 							<td><?= $i + 1 ?></td>
 							<td><?= $domains[$i]['domain'] ?></td>
-							<td><a href="<?= $domains[$i]['file_manager'] ?>" class="btn btn-sm btn-success btn-square" target="_blank"><i class="fa fa-upload"></i></a></td>
+							<td>
+								<a href="<?= $domains[$i]['file_manager'] ?>" class="btn btn-sm btn-success btn-square" target="_blank"><i class="fa fa-upload"></i></a>
+								<?php if ($this->sitepro->get(['status']) === 'active'): ?>
+									<a href="<?= base_url('h/view_account/'.$info['username'].'?builder=true&domain='.$domains[$i]['domain']) ?>" class="btn btn-sm btn-danger btn-square" target="_blank"><i class="fa fa-file"></i></a>
+								<?php endif ?>
+							</td>
 						</tr>
 					<?php } ?>
 				<?php else: ?>

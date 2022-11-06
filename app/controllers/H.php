@@ -17,6 +17,7 @@ class H extends CI_Controller
 		$this->load->model('ui');
 		$this->load->model('hosting');
 		$this->load->model('captcha');
+		$this->load->model('sitepro');
 		if($this->user->is_logged())
 		{
 			if($this->user->logged_data(['status']) !== 'active')
@@ -230,6 +231,42 @@ class H extends CI_Controller
 				$this->load->view($this->ui->template_dir().'/includes/header', $data);
 				$this->load->view($this->ui->template_dir().'/cpanel_login');
 				$this->load->view($this->ui->template_dir().'/includes/footer');
+			}
+			elseif($this->input->get('builder') AND $this->input->get('builder'))
+			{
+				$info = $this->hosting->get([], ['username' => $id]);
+				if(!is_array($info) AND count($info) > 0)
+				{
+					redirect('p/error_404');
+				}
+				else
+				{
+					$domain = trim($this->input->get('domain'));
+					if($domain !== $info[0]['domain'])
+					{
+						$dir = '/htdocs/'.$domain;
+					}
+					else
+					{
+						$dir = '/htdocs/';
+					}
+					$builder = $this->sitepro->run(
+						'https://site.pro',
+						$info[0]['username'],
+						$info[0]['password'],
+						$domain,
+						$dir
+					);
+					if($builder->isSuccessful() === false)
+					{
+						$this->session->set_flashdata('msg', json_encode([0, $this->getMessage()]));
+						redirect('h/view_account/'.$id);
+					}
+					elseif($builder->isSuccessful() === true)
+					{
+						 header('location: '.$this->getMessage()); 
+					}
+				}
 			}
 			else
 			{
