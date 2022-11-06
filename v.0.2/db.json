@@ -1,0 +1,5 @@
+{
+	"0": "DROP TABLE IF EXISTS `nx_sitepro`;",
+	"1": "CREATE TABLE `nx_sitepro` (`id` varchar(20) NOT NULL DEFAULT 'sitepro',`username` varchar(100) NOT NULL,`password` varchar(100) NOT NULL,`status` varchar(8) NOT NULL);",
+	"2": "INSERT INTO `nx_sitepro` (`username`, `password`, `status`) VALUES ('username', 'password', 'inactive');"
+}

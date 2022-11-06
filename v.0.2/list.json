@@ -1,0 +1,12 @@
+{
+	"0": "Updated file app/controllers/N.php",
+	"1": "Updated file app/controllers/H.php",
+	"2": "Created file app/libraries/Siteproapi.php",
+	"3": "Updated file app/language/english/custom_lang.php",
+	"4": "Created file app/models/Sitepro.php",
+	"5": "Updated file app/models/Hosting.php",
+	"6": "Updated file public/default/view_account.php",
+	"7": "Updated file app/config/constants.php",
+	"8": "Updated file app/install/table.sql",
+	"9": "Added SitePro Info table to database"
+}
