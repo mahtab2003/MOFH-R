@@ -101,8 +101,8 @@ DROP TABLE IF EXISTS `nx_mofh`;
 # END
 CREATE TABLE `nx_mofh` (
 	`id` varchar(20) NOT NULL DEFAULT 'mofh',
-	`username` varchar(100) NOT NULL,
-	`password` varchar(100) NOT NULL,
+	`username` varchar(256) NOT NULL,
+	`password` varchar(256) NOT NULL,
 	`cpanel_url` varchar(100) NOT NULL,
 	`ns_1` varchar(100) NOT NULL,
 	`ns_2` varchar(100) NOT NULL,
