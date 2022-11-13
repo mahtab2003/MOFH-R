@@ -6,5 +6,7 @@ $config['mailtype'] = 'html';
 $config['wordwrap'] = TRUE;
 $config['wrapchars'] = 1000;
 $config['smtp_timeout'] = 300;
+$config['smtp_crypto'] = 'tls';
+
 
 ?>
