@@ -2,10 +2,10 @@
 MOFH-R is a hosting account and support management system designed to work with MOFH (MyOwnFreeHost) and GoGetSSL. MOFH-R currently has a limited number of features which are listed below:
 
 [![AppVeyor](https://img.shields.io/badge/Licence-GPL_2.0-orange)](LICENSE)
-[![AppVeyor](https://img.shields.io/badge/Version-v0.1-informational)](https://github.com/mahtab2003/MOFH-R/releases/latest)
+[![AppVeyor](https://img.shields.io/badge/Version-v0.2-informational)](https://github.com/mahtab2003/MOFH-R/releases/latest)
 ![AppVeyor](https://img.shields.io/badge/Build-Passed-brightgreen)
 ![AppVeyor](https://img.shields.io/badge/Interface-AdminLTE-lightgreen)
-![AppVeyor](https://img.shields.io/badge/Development-Continued-lightgreen)
+![AppVeyor](https://img.shields.io/badge/Development-In_Progress-lightgreen)
 ![AppVeyor](https://img.shields.io/badge/Dependencies-PHP,_MySQL,_cUrl-red)
 
 ### Features
