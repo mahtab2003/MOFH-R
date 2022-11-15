@@ -5,8 +5,10 @@
 	"3": "Updated file app/language/english/custom_lang.php",
 	"4": "Created file app/models/Sitepro.php",
 	"5": "Updated file app/models/Hosting.php",
-	"6": "Updated file public/default/view_account.php",
-	"7": "Updated file app/config/constants.php",
-	"8": "Updated file app/install/table.sql",
-	"9": "Added SitePro Info table to database"
+	"6": "Updated file app/models/Ssl.php",
+	"7": "Updated file public/default/view_account.php",
+	"8": "Updated file app/config/constants.php",
+	"9": "Updated file app/install/table.sql",
+	"10": "Added SitePro Info table to database",
+	"11": "Updated file app/controllers/C.php"
 }
