@@ -2,10 +2,10 @@
 MOFH-R is a hosting account and support management system designed to work with MOFH (MyOwnFreeHost) and GoGetSSL. MOFH-R currently has a limited number of features which are listed below:
 
 [![AppVeyor](https://img.shields.io/badge/Licence-GPL_2.0-orange)](LICENSE)
-[![AppVeyor](https://img.shields.io/badge/Version-v0.1-informational)](https://github.com/mahtab2003/MOFH-R/releases/latest)
+[![AppVeyor](https://img.shields.io/badge/Version-v0.2-informational)](https://github.com/mahtab2003/MOFH-R/releases/latest)
 ![AppVeyor](https://img.shields.io/badge/Build-Passed-brightgreen)
 ![AppVeyor](https://img.shields.io/badge/Interface-AdminLTE-lightgreen)
-![AppVeyor](https://img.shields.io/badge/Development-Continued-lightgreen)
+![AppVeyor](https://img.shields.io/badge/Development-In_Progress-lightgreen)
 ![AppVeyor](https://img.shields.io/badge/Dependencies-PHP,_MySQL,_cUrl-red)
 
 ### Features
@@ -34,6 +34,7 @@ Your server needs to meet the following minimum requirements to run MOFH-R:
 The installation of MOFH-R is much easier than you think!
 - Download the MOFH-R installation files [here](https://github.com/mahtab2003/MOFH-R/releases/latest). Alternatively, if you want the latest development version you can get it [here](https://github.com/mahtab2003/MOFH-R/archive/refs/heads/master.zip).
 - Extract the file and upload the contents to your web hosting account. 
+- Edit `app/config/config.php` file and set your base url like `https://{your-domain}/{directory}/`.
 - Create a new database for MOFH-R.
 - Go to ```https://{your.domain}/{directory}/i/``` and click on the 'Get Started' button.
 - Set your website's ```Base URL```, ```Cookie Prefix```, ```Encrtption Key```, enable ```CSRF Protection``` and hit the 'Next Step' button.
