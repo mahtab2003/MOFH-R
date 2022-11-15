@@ -32,6 +32,24 @@ if(!function_exists('get_templates'))
 	}
 }
 
+if(!function_exists('get_backups'))
+{
+	function get_backups()
+	{
+		$files = scandir(APPPATH.'cache/');
+		$backups = [];
+		foreach ($files as $file) {
+			if($file !== '.' AND $file !== '..' AND $file !== 'index.html')
+			{
+				$date = str_replace('.crypt', '', $file);
+				$date = strtotime($date);
+				$backups[] = ['name' => date("d-m-Y h:i A", $date), 'file' => $file];
+			}
+		}
+		return $backups;
+	}
+}
+
 if(!function_exists('get_info'))
 {
 	function get_info($data = '')

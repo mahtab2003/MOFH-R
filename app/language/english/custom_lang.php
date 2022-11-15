@@ -33,6 +33,7 @@ $lang['edit_email_title'] = 'Edit Email';
 $lang['about_title'] = 'About';
 $lang['cpanel_login_title'] = 'cPanel Login';
 $lang['update_title'] = 'System Update';
+$lang['restore_title'] = 'Restore';
  
 // Headings Text
 $lang['general_settings_text'] = 'General';
@@ -68,6 +69,8 @@ $lang['announcements_text'] = 'Announcements';
 $lang['quick_setup_text'] = 'Quick Setup';
 $lang['emails_text'] = 'Email Templates';
 $lang['edit_email_text'] = 'Edit Email Template';
+$lang['user_statistics_text'] = 'User Statistics';
+$lang['backups_text'] = 'Restore a Back-Up';
 
 // Paragraphs Text
 $lang['login_header_text'] = 'Sign in to start your session.';
@@ -186,6 +189,7 @@ $lang['deactivate_btn_text'] = 'Deactivate';
 $lang['show_hide_btn_text'] = 'Show / Hide';
 $lang['redirect_btn_text'] = 'Redirect Now';
 $lang['update_btn_text'] = 'Update Now';
+$lang['restore_btn_text'] = 'Restore Now';
 
 // Links Text
 $lang['login_page_text'] = 'Already have an account?';

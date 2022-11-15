@@ -69,7 +69,7 @@
 					</span>
 					<div class="info-box-content">
 						<span class="info-box-text"><?= $this->ui->text('ticket_text') ?></span>
-						<span class="info-box-text"><?= count($this->ticket->get('ticket', ['id'], ['status' => 'open'], [['status' => 'customer']])) ?> <?= $this->ui->text('in_total_text') ?></span>
+						<span class="info-box-text"><?= count($this->ticket->get('ticket', ['id'], ['status' => 'open'], [['status' => 'client']])) ?> <?= $this->ui->text('in_total_text') ?></span>
 					</div>
 				</div>
 			</div>

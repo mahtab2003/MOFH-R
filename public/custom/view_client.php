@@ -17,6 +17,48 @@
 <div class="content">
 	<div class="container-xl">
 		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<h1 class="card-title"><i class="fa fa-chart-line mr-2"></i><?= $this->ui->text('user_statistics_text') ?></h1>
+					</div>
+					<div class="row">
+						<div class="col-6 col-md-4 py-3 text-center">
+							<div>
+								<?php $count = $this->hosting->get(['id'], ['for' => $data['key']]); ?>
+									<?php if (is_array($count) AND count($count) > 0): ?>
+										<?= count($count) ?>
+									<?php else: ?>
+										0
+									<?php endif ?>
+								</div>
+							<div><?= $this->ui->text('accounts_text') ?></div>
+						</div>
+						<div class="col-6 col-md-4 py-3 text-center">
+							<div>
+								<?php $count = $this->ssl->get(['id'], ['for' => $data['key']]); ?>
+									<?php if (is_array($count) AND count($count) > 0): ?>
+										<?= count($count) ?>
+									<?php else: ?>
+										0
+									<?php endif ?>
+								</div>
+							<div><?= $this->ui->text('ssl_text') ?></div>
+						</div>
+						<div class="col-12 col-md-4 py-3 text-center">
+							<div>
+								<?php $count = $this->ticket->get('ticket', ['id'], ['for' => $data['key']]); ?>
+									<?php if (is_array($count) AND count($count) > 0): ?>
+										<?= count($count) ?>
+									<?php else: ?>
+										0
+									<?php endif ?>
+								</div>
+							<div><?= $this->ui->text('ticket_text') ?></div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-6">
 				<div class="card mb-2">
 					<div class="card-header">

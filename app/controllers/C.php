@@ -10,6 +10,7 @@ class C extends CI_Controller
 		$this->load->model('hosting');
 		$this->load->model('mailer');
 		$this->load->model('ssl');
+		$this->load->library('encryption');
 	}
 
 	function gogetssl()
@@ -69,6 +70,29 @@ class C extends CI_Controller
 		}
 	}
 
+	function backup()
+	{
+		if($this->input->get('corn_version'))
+		{
+			$users = $this->base->get('users');
+			$accounts = $this->base->get('hosting');
+			$ssl = $this->base->get('ssl');
+			$ticket = $this->base->get('ticket');
+			$reply = $this->base->get('reply');
+			$emails = $this->base->get('emails');
+			$records = [
+				'hosting_clients' => $users,
+				'hosting_accounts' => $accounts,
+				'ssl_certificate' => $ssl,
+				'support_ticket' => $ticket,
+				'ticket_replies' => $reply,
+				'email_templates' => $emails
+			];
+			$data = $this->encryption->encrypt(json_encode($records));
+			file_put_contents(APPPATH.'cache/'.date('d.m.Y.h.i.s').'.crypt', $data);
+		}
+	}
+
 	function mofh()
 	{
 		if($this->input->get('username'))
@@ -81,6 +105,7 @@ class C extends CI_Controller
 				if(file_exists(APPPATH.'logs/mofh_callback.json'))
 				{
 					$logs = file_get_contents(APPPATH.'logs/mofh_callback.json');
+					$logs = $this->encryption->decrypt($logs);
 					$logs = json_decode($logs, true);
 				}
 				else
@@ -94,7 +119,8 @@ class C extends CI_Controller
 					'time' => date('d-m-Y h:i:s A')
 				];
 				$logs[] = $callback;
-				file_put_contents(APPPATH.'logs/mofh_callback.json', json_encode($logs));
+				$logs = $this->encryption->encrypt(json_encode($logs));
+				file_put_contents(APPPATH.'logs/mofh_callback.json', $logs);
 				if(substr($status, 0, 3) === 'sql')
 				{
 					$this->hosting->set(['sql' => $status, 'status' => 'active'], ['username' => $username]);

@@ -17,6 +17,7 @@ class I extends CI_Controller
 		$base_url = str_replace('index.php/i/', '', $protocol.$domain.$uri);
 		$base_url = str_replace('index.php/i', '', $base_url);
 		$base_url = str_replace('index.php/', '', $base_url);
+		$base_url = str_replace('/i/', '', $base_url);
 		$base_url = str_replace('welcome/', '', $base_url);
 		$base_url = str_replace('step1/', '', $base_url);
 		$base_url = str_replace('step2/', '', $base_url);
@@ -66,7 +67,7 @@ class I extends CI_Controller
 				$config_file = file_get_contents(APPPATH.'install/config.php');
 				$constant_file = file_get_contents(APPPATH.'install/constants.php');
 				$config_file = str_replace('MODE_BASE_URL', $this->input->post('base_url'), $config_file);
-				$config_file = str_replace('MODE_ENCRYPT_KEY', $this->input->post('encrypt_key'), $config_file);
+				$config_file = str_replace('MODE_ENCRYPT_KEY', sha1(str_repeat($this->input->post('encrypt_key'), 20)), $config_file);
 				$config_file = str_replace('MODE_COOKIE_PREFIX', $this->input->post('cookie_prefix'), $config_file);
 				$config_file = str_replace('MODE_CSFR_PROTECTION', $this->input->post('csrf_protection'), $config_file);
 				file_put_contents(APPPATH.'config/config.php', $config_file);

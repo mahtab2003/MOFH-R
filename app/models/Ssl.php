@@ -11,6 +11,10 @@ class Ssl extends CI_Model
 		$this->load->model('gogetssl');
 		$this->load->library('encryption');
 		$this->ssl_dir = APPPATH.'storage/';
+		if(!is_dir($this->ssl_dir))
+		{
+			mkdir($this->ssl_dir);
+		}
 	}
 
 	function create($provider, $domain)

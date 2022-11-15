@@ -63,32 +63,35 @@ class P extends CI_Controller
 		{
 			if(is_updated() === false)
 			{
-				$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'.json');
-				$latest = json_decode($json, true);
 				if($this->input->get('update'))
-				{
-					if($latest['files'] === "true")
+				{ 
+					for ($i = get_info('version'); $i < is_updated(true); $i++)
 					{
-						$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/files.json');
-						$list = json_decode($json, true);
-						foreach ($list as $key => $value)
-						{ 
-							file_put_contents(APPPATH.'../'.$key, base64_decode($value));
-						}
-					}
-					if($latest['db'] === "true")
-					{
-						$this->load->database();
-						$json = @file_get_contents(NX_REPO.'v.'.is_updated(true).'/db.json');
-						$list = json_decode($json, true);
-						foreach ($list as $value)
+						$json = @file_get_contents(NX_REPO.'v.'.$i.'.json');
+						$latest = json_decode($json, true);
+						if($latest['files'] === "true")
 						{
-							$this->db->query(str_replace('nx_', $this->db->dbprefix, $value));
+							$json = @file_get_contents(NX_REPO.'v.'.$i.'/files.json');
+							$list = json_decode($json, true);
+							foreach ($list as $key => $value)
+							{ 
+								file_put_contents(APPPATH.'../'.$key, base64_decode($value));
+							}
 						}
+						if($latest['db'] === "true")
+						{
+							$this->load->database();
+							$json = @file_get_contents(NX_REPO.'v.'.$i.'/db.json');
+							$list = json_decode($json, true);
+							foreach ($list as $value)
+							{
+								$this->db->query(str_replace('nx_', $this->db->dbprefix, $value));
+							}
+						}
+						$data = file_get_contents(APPPATH.'config/constants.php');
+						$data = str_replace(get_info('version'), $i, $data);
+						file_put_contents(APPPATH.'config/constants.php', $data);
 					}
-					$data = file_get_contents(APPPATH.'config/constants.php');
-					$data = str_replace(get_info('version'), is_updated(true), $data);
-					file_put_contents(APPPATH.'config/constants.php', $data);
 					redirect('p/about');
 				}
 				else
@@ -111,6 +114,56 @@ class P extends CI_Controller
 		else
 		{
 			redirect('p/error_503');
+		}
+	}
+
+	function restore()
+	{
+		$this->load->model('user');
+		$this->load->library('encryption');
+		if($this->user->is_logged() AND get_cookie('role') === 'root')
+		{
+			if($this->input->post('submit') AND $this->input->post('file'))
+			{
+				$file = $this->input->post('file');
+				$file = file_get_contents(APPPATH.'cache/'.$file);
+				$data = $this->encryption->decrypt($file);
+				$data = json_decode($data, true);
+				$tables = [
+					'hosting_clients' => 'users',
+					'hosting_accounts' => 'hosting',
+					'ssl_certificate' => 'ssl'
+				];
+				foreach ($tables as $key => $table)
+				{
+					$records = $data[$key];
+					for ($i = 0; $i < count($records); $i++)
+					{ 
+						if ($table === 'users')
+						{
+							$test = $this->base->get($table, ['key' => $records[$i]['key']]);
+						}
+						else
+						{
+							$test = $this->base->get($table, ['for' => $records[$i]['for']]);
+						}
+						if(!count($test) > 0)
+						{
+							$this->base->new($table, $records[$i]);
+						}
+					}
+				}
+				redirect('n');
+			}
+			else
+			{
+				$data['title'] = 'restore_title';
+				$data['list'] = get_backups();
+				
+				$this->load->view($this->ui->template_dir().'/includes/header', $data);
+				$this->load->view($this->ui->template_dir().'/restore');
+				$this->load->view($this->ui->template_dir().'/includes/footer');
+			}
 		}
 	}
 
