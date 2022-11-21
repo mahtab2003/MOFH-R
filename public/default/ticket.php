@@ -83,7 +83,7 @@
 						<?php
 						if ($page > 0):
 							$page1 = $page - 1;
-							$link1 = base_url('t/ticket?page='.$page1);
+							$link1 = base_url('t/tickets?page='.$page1);
 							$status1 = '';
 						else:
 							$link1 = '#';
@@ -91,7 +91,7 @@
 						endif;
 						if($page < $i):
 							$page2 = $page + 1;
-							$link2 = base_url('t/ticket?page='.$page2);
+							$link2 = base_url('t/tickets?page='.$page2);
 							$status2 = '';
 						else:
 							$link2 = '#';
