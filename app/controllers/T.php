@@ -39,7 +39,7 @@ class T extends CI_Controller
 	{
 		if($this->user->is_logged())
 		{
-			if(get_cookie('role') == 'root' OR get_cookie('role') == 'admin')
+			if(get_cookie('role') == 'root' OR get_cookie('role') == 'admin' OR get_cookie('role') == 'support')
 			{
 				$data['title'] = 'all_ticket_title';
 				$where = ['status' => 'open'];
