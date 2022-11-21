@@ -21,6 +21,7 @@ MOFH-R is a hosting account and support management system designed to work with 
 	- hCaptcha
 	- GoGetSSL
 	- SMTP
+- Backup / Restore
 - Update Manager
 - Multi-lingual
 
