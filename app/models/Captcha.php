@@ -67,11 +67,22 @@ class Captcha extends CI_Model
 			$captcha = $this->get(['type', 'site_key']);
 			if($captcha['type'] == 'google')
 			{
-				return "<div class=\"g-recaptcha\" data-sitekey=".$captcha['site_key']."></div>\n<script src=\"https://www.google.com/recaptcha/api.js\" async defer ></script>";
+                if(get_cookie('theme') == 'dark') {
+                    return "<div class=\"g-recaptcha\" data-sitekey=".$captcha['site_key']." data-theme=\"dark\"></div>\n<script src=\"https://www.google.com/recaptcha/api.js\" async defer ></script>";
+                }
+                else {
+                    return "<div class=\"g-recaptcha\" data-sitekey=".$captcha['site_key']."></div>\n<script src=\"https://www.google.com/recaptcha/api.js\" async defer ></script>";
+                }
+				
 			}
 			elseif($captcha['type'] == 'human')
 			{
-				return "<div id='captcha' class='h-captcha' data-sitekey=".$captcha['site_key']."></div>\n<script src=\"https://hcaptcha.com/1/api.js\" async defer ></script>";
+                if(get_cookie('theme') == 'dark') {
+				    return "<div id='captcha' class='h-captcha' data-sitekey=".$captcha['site_key']." data-theme=\"dark\"></div>\n<script src=\"https://hcaptcha.com/1/api.js\" async defer ></script>";
+                }
+                else {
+                    return "<div id='captcha' class='h-captcha' data-sitekey=".$captcha['site_key']."></div>\n<script src=\"https://hcaptcha.com/1/api.js\" async defer ></script>";
+                }
 			}
 			return '';
 		}
