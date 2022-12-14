@@ -453,7 +453,7 @@ $config['csrf_token_name'] = 'nx_csrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie';
 $config['csrf_expire'] = 3600;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('c/gogetssl', 'c/mofh');
+$config['csrf_exclude_uris'] = array('c/gogetssl', 'c/mofh', 'h/create_account');
 
 /*
 |--------------------------------------------------------------------------
