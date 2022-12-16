@@ -94,7 +94,7 @@
 			var domain = $('#subdomain').val();
 			var extensions = $('#extension').val();
 			var validomain = domain + extensions;
-			$.post('<?= base_url('h/create_account?check=true') ?>', {domain : validomain, submit: "submit"}, function(data){
+			$.post('<?= base_url('h/create_account?check=true') ?>', {domain : validomain, <?php if ($this->security->get_csrf_token_name()) { echo $this->security->get_csrf_token_name()':'.'"$this->security->get_csrf_hash()"'.','; }?> submit: "submit"}, function(data){
 				if(validomain != data){
 					$('#hidden-area').html('<div class="alert callout callout callout-danger" role="alert"><button class="close" data-dismiss="alert" type="button" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+data+'</div>');
 						$('#config').addClass('d-none');
@@ -108,7 +108,7 @@
 		});
 		$('#verify').click(function(){
 			var domain = $('#domain').val();
-			$.post('<?= base_url('h/create_account?check=true') ?>', {domain : domain, submit: "submit"}, function(data){
+			$.post('<?= base_url('h/create_account?check=true') ?>', {domain : domain, <?php if ($this->security->get_csrf_token_name()) { echo $this->security->get_csrf_token_name()':'.'"$this->security->get_csrf_hash()"'.','; }?> submit: "submit"}, function(data){
 				if(domain != data){
 					$('#hidden-area').html('<div class="alert callout callout callout-danger" role="alert"><button class="close" data-dismiss="alert" type="button" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+data+'</div>');
 						$('#config').addClass('d-none');
